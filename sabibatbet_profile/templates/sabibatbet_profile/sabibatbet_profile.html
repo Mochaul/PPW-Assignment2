@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}
+  Profile Perusahaan
+{% endblock %}
+
+{% block css %}
+  <script type="text/javascript" src="//platform.linkedin.com/in.js">
+  	api_key:   MENYUSUL
+  	onLoad:    onLinkedInLoadCompany
+  	authorize: true
+  </script>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/fitur2.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <section style="height: auto;">
+    <header class="masthead">
+      <div class="overlay">
+        <div class="container">
+          <h1 class="display-1 text-white">WELCOME</h1>
+          <h2 class="display-4 text-white" id="companyName">Perusahaan </h2>
+          <br>
+          <a href="#" class="head-button">Lihat Forum</a><a href="#" class="head-button">Cari Mahasiswa</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="container" style="margin-top: 4%;" id="about-company-section">
+      <div class="row">
+        <div class="col-lg-11 col-md-11 col-sm-11 col-11 mx-auto">
+          <h2 id="title-about">About Company:</h2>
+          <div id="about"></div>
+          <br>
+          <div class="row">
+            <div class="col-lg-6 col-md-4 col-sm-4 col-4" id="judul-about">
+              <h5 id="about-company">Tipe Perusahaan</h5>
+              <h5 id="about-company">Web Perusahaan</h5>
+              <h5 id="about-company">Spesialitas</h5>
+            </div>
+            <div class="col-lg-6 col-md-8 col-sm-4 col-8">
+              <h5 id="companyType"></h5>
+              <h5 id="companyWeb"></h5>
+              <!-- : <a href="https://{{companyWeb}}">{{companyWeb}}<a> -->
+              <h5 id="companySpecialty"></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block javascript %}
+<script src="{% static 'js/fitur1.js' %}"></script>
+{% endblock %}
