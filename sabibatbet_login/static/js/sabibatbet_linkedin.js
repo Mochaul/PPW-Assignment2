@@ -31,9 +31,7 @@ function displayProfileData(data){
       });
     });
     // $("#gambar").append('<img src="'+user.pictureUrl+'"class="img-circle">');
-    $("#name").append('<b>'+user.firstName+' '+user.lastName+'</b><br>'+user.headline);
-    $("#tempat").append(user.location.name +'<br>'+
-      '<button class="btn btn-primary">Company Profile </button>');
+    $("#tempat").append('<button class="btn btn-primary">Company Profile </button>'+'<br>');
     $("#logout").append("<button class='btn btn-danger' onClick='logout()'>Logout</button>");
     console.log(data);
     console.log();
@@ -50,7 +48,7 @@ function getCompanyData(id) {
 
     IN.API.Raw("/companies/" + cpnyID + ":(id,name,ticker,description)?format=json")
       .method("GET")
-      .result(dipslayCompanyData)
+      .result(displayCompanyData)
       .error(onError);
 }
 
@@ -72,7 +70,7 @@ function removeProfileData(){
   window.location.assign("/sabibatbet_login/")
   $.ajax({
       method: "GET",
-      url: '{% url "sabibatbet_login:remove-session" %}',
+      url: '/sabibatbet_login/remove-session',
 
 });
 }
