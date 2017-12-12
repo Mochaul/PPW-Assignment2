@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "sabibatbet_profile/layout/base.html" %}
 {% load staticfiles %}
 {% load static %}
 
@@ -12,7 +12,7 @@
   	onLoad:    onLinkedInLoadCompany
   	authorize: true
   </script>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/fitur2.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/sabibatbet_profile.css' %}" />
 {% endblock %}
 
 {% block content %}
@@ -23,7 +23,8 @@
           <h1 class="display-1 text-white">WELCOME</h1>
           <h2 class="display-4 text-white" id="companyName">Perusahaan </h2>
           <br>
-          <a href="#" class="head-button">Lihat Forum</a><a href="#" class="head-button">Cari Mahasiswa</a>
+          <a href="#" class="btn btn-primary">Lihat Forum</a>
+          <a href="#" class="btn btn-primary">Cari Mahasiswa</a>
         </div>
       </div>
     </header>
