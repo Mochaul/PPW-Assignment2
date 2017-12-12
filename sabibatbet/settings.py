@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sabibatbet_login',
     'sabibatbet_profile',
+    'sabibatbet_menanggapi',
 ]
 
 MIDDLEWARE = [
