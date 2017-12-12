@@ -15,13 +15,13 @@ function displayProfileData(data){
     console.log(id);
     $.ajax({
       method : "POST",
-      url : '{% url "sabibatbet-login:add-session" %}',
+      url : '/sabibatbet_login/add-session/',
       data : { name: user.firstName+" "+user.lastName, id:id, csrfmiddlewaretoken : '{{ csrf_token }}'},
       success : function (){},
       error : function (error){
       }
     });
-    $("#gambar").append('<img src="'+user.pictureUrl+'"class="img-circle">');
+    // $("#gambar").append('<img src="'+user.pictureUrl+'"class="img-circle">');
     $("#name").append('<b>'+user.firstName+' '+user.lastName+'</b><br>'+user.headline);
     $("#tempat").append(user.location.name +'<br>'+
       '<button class="btn btn-primary">Company Profile </button>');
