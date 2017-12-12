@@ -8,18 +8,27 @@ function getProfileData() {
     IN.API.Profile("me").fields("id", "first-name", "last-name", "headline", "location", "picture-url", "public-profile-url", "email-address").result(displayProfileData).error(onError);
 }
 
-// Handle the successful return from the API call
 function displayProfileData(data){
     var user = data.values[0];
     var id = user.id;
     console.log(id);
-    $.ajax({
-      method : "POST",
-      url : '/sabibatbet_login/add-session/',
-      data : { name: user.firstName+" "+user.lastName, id:id, csrfmiddlewaretoken : '{{ csrf_token }}'},
-      success : function (){},
-      error : function (error){
-      }
+    IN.API.Raw("/companies?format=json&is-company-admin=true")
+    .method("GET")
+    .result(function(response){
+      console.log(response.values[0].id)
+      $.ajax({
+        method : "POST",
+        url : '/sabibatbet_login/add-session/',
+        data : {
+          name: user.firstName+" "+user.lastName,
+          id:id,
+          companyID: response.values[0].id,
+          csrfmiddlewaretoken : '{{ csrf_token }}'
+        },
+        success : function (){},
+        error : function (error){
+        }
+      });
     });
     // $("#gambar").append('<img src="'+user.pictureUrl+'"class="img-circle">');
     $("#name").append('<b>'+user.firstName+' '+user.lastName+'</b><br>'+user.headline);
@@ -27,17 +36,17 @@ function displayProfileData(data){
       '<button class="btn btn-primary">Company Profile </button>');
     $("#logout").append("<button class='btn btn-danger' onClick='logout()'>Logout</button>");
     console.log(data);
-    console.log();  
+    console.log();
     // $("#name").append(
     //   '<p>'+'Logged in as '+user.firstName+' '+user.lastName+'</p>'+
     //   '<button class="btn btn-primary delete">Company Profile</button>');
-    // document.getElementById('profileData').style.display = 'block'; 
+    // document.getElementById('profileData').style.display = 'block';
 }
 
 // Use the API call wrapper to request the company's profile data
-function getCompanyData() {     
+function getCompanyData(id) {     
 	// Masukin ID company lau
-    var cpnyID = 13600614;
+    var cpnyID = id;
 
     IN.API.Raw("/companies/" + cpnyID + ":(id,name,ticker,description)?format=json")
       .method("GET")
@@ -48,7 +57,6 @@ function getCompanyData() {
 function displayCompanyData(data){
     // To do
 }
-
 // Handle an error response from the API call
 function onError(error) {
     console.log(error);
