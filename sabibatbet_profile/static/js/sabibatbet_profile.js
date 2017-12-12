@@ -1,26 +1,41 @@
-// Setup an event listener to make an API call once auth is complete
-function onLinkedInLoad() {
-    IN.Event.on(IN, "auth", getProfileData);
+function checkLoggedIn() {
+  if (IN.User.isAuthorized() === true) {
+      IN.User.authorize(onLinkedInLoadCompany);
+  } else {
+      window.location = "/";
+  }
 }
 
-// Use the API call wrapper to request the member's profile data
-function getProfileData() {
-    IN.API.Profile("me").fields("id", "first-name", "last-name", "headline", "location", "picture-url", "public-profile-url", "email-address").result(displayProfileData).error(onError);
+// Use the API call wrapper to request the company's profile data
+function getCompanyData() {
+    var cpnyID = localStorage.getItem('companyId');
+    console.log(cpnyID);
+    IN.API.Raw("/companies/" + cpnyID + ":(id,name,ticker,description,company-type,website-url,specialties)?format=json")
+      .method("GET")
+      .result(displayCompanyData)
+      .error(onError);
 }
 
-// Handle the successful return from the API call
-function displayProfileData(data){
+function onLinkedInLoadCompany() {
+    IN.Event.on(IN, "auth", getCompanyData);
+}
+
+function displayCompanyData(data){
     console.log(data);
-    var user = data.values[0];
-    $("#baton").append('<a class="btn btn-primary btn-lg" href="/profile/" role="button">Company Dashboard &raquo;</a>')
-    $("#name").append('Logged in as '+user.firstName+' '+user.lastName);
+    console.log(data.companyType.name);
+    $('html').css("display", "inline")
+    $('#companyName').append(data.name + '"');
+    $('#about').append(data.description);
+    $('#companyType').append(data.companyType.name);
+    $('#companyWeb').append("<a href='" + data.websiteUrl + "'>" + data.websiteUrl + "</a>");
+    $('#companySpecialty').append(data.specialties.values);
     $("#space-logout").append('<li class="nav-item"><a class="btn btn-danger" onclick="logout()">Logout</a></li>');
-    document.getElementById('profileData').style.display = 'block';
 }
-// Handle an error response from the API call
+
 function onError(error) {
-    console.log(error);
+  console.log(error);
 }
+
 // Destroy the session of linkedin
 function logout(){
     IN.User.logout(removeProfileData);

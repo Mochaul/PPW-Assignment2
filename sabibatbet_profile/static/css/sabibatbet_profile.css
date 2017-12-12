@@ -1,0 +1,189 @@
+.desain_footer{
+  margin-top: 5%;
+  left: 0;
+  overflow:hidden;
+  line-height: 60px;
+  /*background-color: #000;*/
+  text-align:center;
+  padding:10px;
+  height: 50px;
+  width: 100%;
+  color: rgb(128, 128, 128);
+}
+html {
+  min-height: 100%;
+  display: none;
+}
+.display-1{
+  font-size: 4rem;
+}
+.display-4{
+  font-size: 2.7rem;
+}
+section{
+  padding-top: 48px;
+}
+header.masthead {
+  background: url('https://picsum.photos/1900/1080?image=1078') no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  font-family: serif;
+  border-bottom: 2px solid black;
+}
+
+header.masthead>.overlay {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+button.navbar-toggler{
+  margin-left: auto;
+}
+
+.head-button {
+  margin: 0 20px 0 20px;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #4a4a4a), color-stop(1, #9c9c9c));
+	background:-moz-linear-gradient(top, #4a4a4a 5%, #9c9c9c 100%);
+	background:-webkit-linear-gradient(top, #4a4a4a 5%, #9c9c9c 100%);
+	background:-o-linear-gradient(top, #4a4a4a 5%, #9c9c9c 100%);
+	background:-ms-linear-gradient(top, #4a4a4a 5%, #9c9c9c 100%);
+	background:linear-gradient(to bottom, #4a4a4a 5%, #9c9c9c 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#4a4a4a', endColorstr='#9c9c9c',GradientType=0);
+	background-color:#4a4a4a;
+	-moz-border-radius:17px;
+	-webkit-border-radius:17px;
+	border-radius:17px;
+	border:2px solid #525252;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	padding:8px 15px;
+	text-decoration:none;
+  opacity: 0.77;
+}
+.head-button:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #9c9c9c), color-stop(1, #4a4a4a));
+	background:-moz-linear-gradient(top, #9c9c9c 5%, #4a4a4a 100%);
+	background:-webkit-linear-gradient(top, #9c9c9c 5%, #4a4a4a 100%);
+	background:-o-linear-gradient(top, #9c9c9c 5%, #4a4a4a 100%);
+	background:-ms-linear-gradient(top, #9c9c9c 5%, #4a4a4a 100%);
+	background:linear-gradient(to bottom, #9c9c9c 5%, #4a4a4a 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#9c9c9c', endColorstr='#4a4a4a',GradientType=0);
+	background-color:#9c9c9c;
+  color: white;
+}
+.head-button:active {
+	position:relative;
+	top:1px;
+}
+#about-company, #companyType, #companyWeb, #companySpecialty{
+  font-size: 1rem;
+  /*font-family:'Arial Black', sans-serif;*/
+}
+/*#title-about{
+  font-family:'Arial Black', sans-serif;
+  font-size:1.7em;
+  text-decoration:none;
+  line-height:1.7em;
+  color:#000000;
+}*/
+#about-company-section{
+  border: 3px solid black;
+  -moz-box-shadow: 10px 10px 4px 1px #8f8f8f;
+	-webkit-box-shadow: 10px 10px 4px 1px #8f8f8f;
+	box-shadow: 10px 10px 4px 1px #8f8f8f;
+  padding: 15px 0 15px 0;
+}
+#about{
+  font-size: 25px;
+  font-weight: 500;
+}
+@media (max-width: 1025px) {
+  div.overlay{
+    padding: 100px 0 100px 0;
+  }
+}
+@media (max-width: 769px) {
+  div.overlay{
+    padding: 3rem 0;
+  }
+}
+@media (max-width: 426px) {
+  #about{
+    font-size: 16px;
+  }
+  nav.navbar{
+    width: 425px;
+  }
+  .display-1{
+    font-size: 3rem;
+  }
+  .display-4{
+    font-size: 1.7rem;
+  }
+  .head-button{
+    width: -webkit-fill-available;
+    margin: 10px 20px 10px 20px;
+  }
+  #title-about{
+    font-size: 1.6em;
+    margin-left: 4%;
+  }
+  #about-company, #companyType, #companyWeb, #companySpecialty{
+    font-size: 0.81rem;
+  }
+  #judul-about{
+    padding-right: 0;
+  }
+  .desain_footer > h5{
+    font-size: 1.02rem;
+  }
+  #about-company-section{
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+  }
+}
+@media (max-width: 376px) {
+  .display-4{
+    font-size: 1.5rem;
+  }
+  nav.navbar{
+    width: 375px;
+  }
+  #about-company, #companyType, #companyWeb, #companySpecialty{
+    font-size: 0.72rem;
+  }
+  .desain_footer{
+    height: 55px;
+  }
+  #about{
+    font-size: 14px;
+  }
+}
+@media (max-width: 321px) {
+  nav.navbar{
+    width: 320px;
+  }
+  #about-company, #companyType, #companyWeb, #companySpecialty{
+    font-size: 0.614166rem;
+  }
+  .desain_footer{
+    height: 55px;
+  }
+  #about{
+    font-size: 12px;
+  }
+  .display-4{
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 1025px) {
+  header.masthead>.overlay {
+    padding: 8rem 0;
+  }
+}

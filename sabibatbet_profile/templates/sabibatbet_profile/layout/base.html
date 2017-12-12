@@ -1,59 +1,42 @@
-{% load staticfiles %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="SABIBATBET">
-    <meta name="author" content="{{author}}">
-
-    <!-- bootstrap csss -->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.js"></script>
-    <script type="text/javascript" src="//platform.linkedin.com/in.js">
-    api_key:   816mxerpb74tkq
-    onLoad:    onLinkedInLoad
-    authorize: true
-    </script>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/sabibatbet_login.css' %}" />
-
-    <title>
-        {% block title %} SABIBATBET {% endblock %}
-    </title>
-</head>
-<body>
-<header>
-    {% include "sabibatbet_profile/partials/header.html" %}
-</header>
-<content>
-    <div class="container">
-        {% for message in messages %}
-        <div class="alert {{ message.tags }} alert-dismissible" role="alert" id="django-messages">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="margin-right: 15px;">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            {{ message }}
-        </div>
-        {% endfor %}
-
-        {% block content %}
-        <!-- Your Content Here -->
-        {% endblock %}
-    </div>
-</content>
-<footer>
-    <hr>
-    {% block footer %}
-    {% include "sabibatbet_profile/partials/footer.html" %}
+    <title>{% block title %}{% endblock %}</title>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    {% block css %}
+    <!-- CSS TAROH DI APPS MASING2 AJA YA BUAT NYESUAIIN -->
     {% endblock %}
-</footer>
+</head>
+
+<body>
+    <div class="desain_header">
+      {% block header %}
+
+      {% endblock %}
+    </div>
+
+    <content>
+      {% block content %}
+      {% endblock %}
+    </content>
+
+    <footer class="desain_footer">
+      {% include "sabibatbet_profile/partials/footer.html" %}
+    </footer>
+</body>
 
 <!-- Jquery n Bootstrap Script -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="{% static 'js/sabibatbet_linkedin.js' %}"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 {% block javascript %}
 {% endblock %}
-</body>
 </html>
