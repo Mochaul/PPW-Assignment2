@@ -4,17 +4,22 @@
   <div class="col-md-6 col-md-offset-3">
     <div class="rata-tengah">
       <div class="judul">
-        <h1> Forum {{profile.}}</h1>
+        <h1> Forum {{company_id}}</h1>
       </div>
     </div>
-    <div class="col-lg-4">
-      <p class="text-center">
-        <span class="glyphicon glyphicon-user icon-size"></span>
-      </p>
-    </div>
-    <div class="col-lg-8">
-      <p class="text-left"><strong>{{profile.nama}}</strong></p>
-    </div>
+    {% for post in posts %}
+      <p>{{ post.company_id }} - {{ post.content }}</p>
+    {% endfor %}
   </div>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      IN.API.Raw("/companies/" + 13600614 + ":(id,name,ticker,description)?format=json")
+        .method("GET")
+        .result(function(response){
+          console.log(response);
+        })
+        .error(onError);
+    });
+  </script>
 </div>
 {% endblock %}

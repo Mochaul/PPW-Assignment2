@@ -1,3 +1,11 @@
+function onLinkedInLoad() {
+    IN.Event.on(IN, "auth", abi);
+}
+
+function abi() {
+  console.log("hore")
+}
+
 $(document).ready(function() {
     $('.navbar-nav [data-toggle="tooltip"]').tooltip();
     $('.navbar-twitch-toggle').on('click', function(event) {
