@@ -16,7 +16,7 @@ function displayProfileData(data){
     $.ajax({
       method : "POST",
       url : '/sabibatbet_login/add-session/',
-      data : { name: user.firstName+" "+user.lastName, id:id, csrfmiddlewaretoken : '{{ csrf_token }}'},
+      data : { name: user.firstName+" "+user.lastName, id:id,companyID:getUserCompany() csrfmiddlewaretoken : '{{ csrf_token }}'},
       success : function (){},
       error : function (error){
       }
@@ -35,9 +35,9 @@ function displayProfileData(data){
 }
 
 // Use the API call wrapper to request the company's profile data
-function getCompanyData() {     
+function getCompanyData(id) {     
 	// Masukin ID company lau
-    var cpnyID = 13600614;
+    var cpnyID = id;
 
     IN.API.Raw("/companies/" + cpnyID + ":(id,name,ticker,description)?format=json")
       .method("GET")
@@ -45,10 +45,20 @@ function getCompanyData() {
       .error(onError);
 }
 
+function getUserCompany(){
+  IN.API.Raw("/companies?format=json&is-company-admin=true")
+  .method("GET")
+  .result(function(response){
+    try{
+    return response.values[0].id
+  } catch(err){
+    return -1;
+  }})
+}
+
 function displayCompanyData(data){
     // To do
 }
-
 // Handle an error response from the API call
 function onError(error) {
     console.log(error);
