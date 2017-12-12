@@ -9,13 +9,21 @@
     <meta name="author" content="{{author}}">
 
     <!-- bootstrap csss -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">\
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sabibatbet_forum.css' %}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700">
+    <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.4.1.css">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron:900" rel="stylesheet">
+    <link rel="shortcut icon" href="https://vignette3.wikia.nocookie.net/campcamp/images/e/e7/LI-favicon.png/revision/latest?cb=20160720055853" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.js"></script>
     <script type="text/javascript" src="//platform.linkedin.com/in.js">
     api_key:   816mxerpb74tkq
     onLoad:    onLinkedInLoad
     authorize: true
     </script>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/sabibatbet_login.css' %}" />
 
     <title>
@@ -27,23 +35,10 @@
     {% include "sabibatbet_login/partials/header.html" %}
 </header>
 <content>
-    <div class="container">
-        {% for message in messages %}
-        <div class="alert {{ message.tags }} alert-dismissible" role="alert" id="django-messages">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="margin-right: 15px;">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            {{ message }}
-        </div>
-        {% endfor %}
-
-        {% block content %}
-        <!-- Your Content Here -->
-        {% endblock %}
-    </div>
+    {% block content %}
+    {% endblock %}
 </content>
 <footer>
-    <hr>
     {% block footer %}
     {% endblock %}
 </footer>

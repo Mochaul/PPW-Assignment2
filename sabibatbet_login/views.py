@@ -8,11 +8,6 @@ from .models import User
 response = {}
 
 def index(request):
-	if 'user_login' in request.session:
-		response['login'] = True
-	else:
-		response['login'] = False
-	response['author'] = "Kianutama Radianur"
 	html = 'sabibatbet_login/home.html'
 	return render(request, html, response)
 

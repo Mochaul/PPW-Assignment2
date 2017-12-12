@@ -1,14 +1,51 @@
 {% extends "sabibatbet_login/layout/base.html" %}
-{% block content %}
-<p id="baton"></p>
-<div id="profileData">
-	<h1> Welcome to KlingIn</h1>
-	<script type="in/Login"></script>
-		<div id="gambar"></div>
-		<div id="name"></div>
-		<div id="tempat" style="margin-bottom: 10px;"></div>
-	<div id="logout"></div>
-</div>
-{% endblock %}
-<!-- sign in with linkedin button -->
 
+{% block content %}
+<div class="row">
+  <div class="col-md-6">
+    <div class="rata-tengah">
+      <div class="judul">
+        <h1> Welcome to Keling</h1>
+        <script type="in/Login"></script>
+      </div>
+      <h3> Forum Lowongan Kerja</h2>
+    </div>
+  </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="[ col-xs-12 col-sm-offset-0 col-sm-5 ]">
+            <div class="[ panel panel-default ] panel-google-plus">
+                <div class="panel-heading">
+                    <img class="[ img-circle pull-left ]" src="https://lh3.googleusercontent.com/-CxXg7_7ylq4/AAAAAAAAAAI/AAAAAAAAAQ8/LhCIKQC5Aq4/s46-c-k-no/photo.jpg" alt="Mouse0270" />
+                    <h3>{{ company_id }}</h3>
+                    <h5><span>Dummy</span> </h5>
+                </div>
+                <div class="panel-body">
+                  {% for post in posts %}
+                    <p>{{ post.content }}</p>
+                  {% endfor %}
+                </div>
+                <div class="panel-footer">
+                    <button type="button" class="[ btn btn-default ]">+1</button>
+                    <button type="button" class="[ btn btn-default ]">
+                        <span class="[ glyphicon glyphicon-share-alt ]"></span>
+                    </button>
+                    <div class="input-placeholder">Add a comment...</div>
+                </div>
+                <div class="panel-google-plus-comment">
+                    <img class="img-circle" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=s46" alt="User Image" />
+                    <div class="panel-google-plus-textarea">
+                        <textarea rows="4"></textarea>
+                        <button type="submit" class="[ btn btn-success disabled ]">Post comment</button>
+                        <button type="reset" class="[ btn btn-default ]">Cancel</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

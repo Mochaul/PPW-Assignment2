@@ -34,7 +34,7 @@ function displayProfileData(data){
     $("#tempat").append('<button class="btn btn-primary">Company Profile </button>'+'<br>');
     $("#logout").append("<button class='btn btn-danger' onClick='logout()'>Logout</button>");
     console.log(data);
-    console.log();
+    console.log();  
     // $("#name").append(
     //   '<p>'+'Logged in as '+user.firstName+' '+user.lastName+'</p>'+
     //   '<button class="btn btn-primary delete">Company Profile</button>');
@@ -67,10 +67,9 @@ function logout(){
 
 // Remove profile data from page
 function removeProfileData(){
-  window.location.assign("/sabibatbet_login/")
+  window.location.assign("/sabibatbet_login/");
   $.ajax({
       method: "GET",
       url: '/sabibatbet_login/remove-session',
-
 });
 }
