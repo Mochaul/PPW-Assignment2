@@ -1,0 +1,59 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="SABIBATBET">
+    <meta name="author" content="{{author}}">
+
+    <!-- bootstrap csss -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.js"></script>
+    <script type="text/javascript" src="//platform.linkedin.com/in.js">
+    api_key:   816mxerpb74tkq
+    onLoad:    onLinkedInLoad
+    authorize: true
+    </script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sabibatbet_login.css' %}" />
+
+    <title>
+        {% block title %} SABIBATBET {% endblock %}
+    </title>
+</head>
+<body>
+<header>
+    {% include "sabibatbet_login/partials/header.html" %}
+</header>
+<content>
+    <div class="container">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible" role="alert" id="django-messages">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="margin-right: 15px;">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+        </div>
+        {% endfor %}
+
+        {% block content %}
+        <!-- Your Content Here -->
+        {% endblock %}
+    </div>
+</content>
+<footer>
+    <hr>
+    {% block footer %}
+    {% include "sabibatbet_profile/partials/footer.html" %}
+    {% endblock %}
+</footer>
+
+<!-- Jquery n Bootstrap Script -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{% static 'js/sabibatbet_linkedin.js' %}"></script>
+{% block javascript %}
+{% endblock %}
+</body>
+</html>

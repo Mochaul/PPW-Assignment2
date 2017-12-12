@@ -17,9 +17,17 @@ from django.views.generic.base import RedirectView
 from django.conf.urls import url
 from django.conf.urls import include
 from django.contrib import admin
+import sabibatbet_login.urls as sabibatbet_login
+import sabibatbet_profile.urls as sabibatbet_profile
+import sabibatbet_menanggapi.urls as sabibatbet_menanggapi
 import sabibatbet_forum.urls as sabibatbet_forum
+from django.conf.urls import url, include
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^forum/', include(sabibatbet_forum,namespace='forum')),
+    url(r'^sabibatbet_login/', include(sabibatbet_login, namespace='sabibatbet-login')),
+    url(r'^sabibatbet_profile/', include(sabibatbet_profile, namespace='sabibatbet-profile')),
+    url(r'^sabibatbet_menanggapi/', include(sabibatbet_menanggapi, namespace='sabibatbet-menanggapi')),
+    url(r'^sabibatbet_forum/', include(sabibatbet_forum, namespace='sabibatbet-forum'))
 ]
