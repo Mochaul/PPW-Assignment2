@@ -4,4 +4,5 @@ from django.shortcuts import render
 response = {}
 
 def index(request):
-    return render(request, 'sabibatbet_profile.html', response)
+    html = 'sabibatbet_profile/sabibatbet_profile.html'
+    return render(request, html, response)
