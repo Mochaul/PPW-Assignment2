@@ -47,6 +47,21 @@
         });
       })
     }
+
+    // Destroy the session of linkedin
+    function logout(){
+        IN.User.logout(removeProfileData);
+    }
+
+    // Remove profile data from page
+    function removeProfileData(){
+      window.location.assign("/sabibatbet_login/");
+      $.ajax({
+          method: "GET",
+          url: '/sabibatbet_login/remove-session',
+    });
+    }
+
   </script>
 </div>
 <!-- <div class="container">

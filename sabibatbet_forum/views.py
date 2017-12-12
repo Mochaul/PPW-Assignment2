@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.core import serializers
 import json
 from .models import Post
@@ -9,11 +10,14 @@ from sabibatbet_login.models import User
 
 response = {}
 def index(request):
-    user = User.objects.filter(id=request.session['user_login']).first()
-    response['company_id'] = user.company
-    response['posts'] = serializers.serialize('json',Post.objects.filter(company_id=user.company))
-    html = 'forum.html'
-    return render(request, html, response)
+    if 'user_login' in request.session:
+      user = User.objects.filter(id=request.session['user_login']).first()
+      response['company_id'] = user.company
+      response['posts'] = serializers.serialize('json',Post.objects.filter(company_id=user.company))
+      html = 'forum.html'
+      return render(request, html, response)
+    else:
+      return HttpResponseRedirect(reverse('sabibatbet-login:index'))
 
 def add_post(request):
     if(request.method == "POST"):
