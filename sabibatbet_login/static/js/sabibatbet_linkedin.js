@@ -11,10 +11,27 @@ function getProfileData() {
 // Handle the successful return from the API call
 function displayProfileData(data){
     var user = data.values[0];
-    $("#name").append(
-      '<p>'+'Logged in as '+user.firstName+' '+user.lastName+'</p>'+
-      '<button class="btn btn-primary delete">Company Profile</button>');
-    document.getElementById('profileData').style.display = 'block'; 
+    var id = user.id;
+    console.log(id);
+    $.ajax({
+      method : "POST",
+      url : '{% url "sabibatbet-login:add-session" %}',
+      data : { name: user.firstName+" "+user.lastName, id:id, csrfmiddlewaretoken : '{{ csrf_token }}'},
+      success : function (){},
+      error : function (error){
+      }
+    });
+    $("#gambar").append('<img src="'+user.pictureUrl+'"class="img-circle">');
+    $("#name").append('<b>'+user.firstName+' '+user.lastName+'</b><br>'+user.headline);
+    $("#tempat").append(user.location.name +'<br>'+
+      '<button class="btn btn-primary">Company Profile </button>');
+    $("#logout").append("<button class='btn btn-danger' onClick='logout()'>Logout</button>");
+    console.log(data);
+    console.log();  
+    // $("#name").append(
+    //   '<p>'+'Logged in as '+user.firstName+' '+user.lastName+'</p>'+
+    //   '<button class="btn btn-primary delete">Company Profile</button>');
+    // document.getElementById('profileData').style.display = 'block'; 
 }
 
 // Use the API call wrapper to request the company's profile data
@@ -44,5 +61,10 @@ function logout(){
 
 // Remove profile data from page
 function removeProfileData(){
-    document.getElementById('profileData').remove();
+  window.location.assign("/sabibatbet_login/")
+  $.ajax({
+      method: "GET",
+      url: '{% url "sabibatbet_login:remove-session" %}',
+
+});
 }

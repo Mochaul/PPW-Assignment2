@@ -14,6 +14,25 @@ def index(request):
 	html = 'sabibatbet_login/home.html'
 	return render(request, html, response)
 
+def add_session(request):
+	if request.method == 'POST':
+		name = request.POST['name']
+		id = request.POST['id']
+		request.session['user_login']= id
+		request.session['name'] = name
+		try:
+			user = User.objects.get(id = id)
+		except Exception as e:
+			user = User()
+			user.id = id
+			user.name = name
+			user.save()
+		return HttpResponseRedirect(reverse('sabibatbet_login:index'))
+
+def remove_session(request):
+	request.session.flush()
+	return HttpResponseRedirect(reverse('sabibatbet_login:index'))
+
 
 def login_mahasiswa(request):
 	response['login'] = False
