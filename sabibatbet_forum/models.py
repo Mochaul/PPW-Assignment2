@@ -1,5 +1,4 @@
 from django.db import models
-
 # # Create your models here.
 class Post(models.Model):
     company_id = models.CharField('Company ID', max_length=200)
